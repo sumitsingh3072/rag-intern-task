@@ -2,12 +2,13 @@ import streamlit as st
 import os
 import requests
 import tempfile
-from langchain.chains import ConversationalRetrievalChain
-from langchain.memory import ConversationBufferMemory
-from langchain.retrievers import BM25Retriever, EnsembleRetriever
+from langchain_classic.chains.conversational_retrieval import base
+from langchain_classic.memory import ConversationBufferMemory
+from langchain_community.retrievers.bm25 import BM25Retriever
+from langchain_classic.retrievers.ensemble import EnsembleRetriever
 from langchain_community.vectorstores import Chroma
 from langchain_community.document_loaders import PyPDFLoader
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_text_splitters import RecursiveCharacterTextSplitter  
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_groq import ChatGroq
 from dotenv import load_dotenv
@@ -156,8 +157,8 @@ with st.sidebar:
                                 memory_key="chat_history", 
                                 return_messages=True
                             )
-                            
-                            st.session_state.qa_chain = ConversationalRetrievalChain.from_llm(
+
+                            st.session_state.qa_chain = base.ConversationalRetrievalChain.from_llm(
                                 llm=llm,
                                 retriever=retriever,
                                 memory=memory,
