@@ -1,0 +1,14 @@
+requests==2.32.4
+opentelemetry-api==1.37.0
+opentelemetry-sdk==1.37.0
+opentelemetry-proto==1.37.0
+opentelemetry-exporter-otlp-proto-common==1.37.0
+langchain_community
+langchain-huggingface
+langchain-groq
+chromadb
+pypdf
+rank_bm25
+llama-cpp-python
+streamlit
+sentence-transformers
